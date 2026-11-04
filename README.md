@@ -1,36 +1,45 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Investment Platform
 
-## Getting Started
+A tool that pulls and structures financial data of public equities for fundamental and valuation analysis.
 
-First, run the development server:
+I built it to make company financials and market data easier to search, compare, and reason about in one place; statements, live quotes, and charts instead of jumping between filings and terminals.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+![Financials view for RDDT, showing live price, market cap, and GAAP income statement](docs/financials-overview.png)
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Tech stack
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- **Next.js 16** (App Router) and **React 19**
+- **TypeScript**
+- **Tailwind CSS 4**
+- **Supabase** (Postgres + JS client) for historical financials
+- **Finnhub** for quotes, company overview, and price history
+- **Recharts** for the main price chart
+- **Lucide** for icons
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
 
-## Learn More
 
-To learn more about Next.js, take a look at the following resources:
+## Status and roadmap
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+**Now:** ticker search, stock overview, historical financials grid, and a price chart backed by Finnhub and Supabase.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+**Up next:** finding the right mix of APIs to pull the valuation multiples needed for analysis (without over-fetching or depending on a single vendor).
 
-## Deploy on Vercel
+## How I built it
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+After designing the format and what information is needed myself, I use Cursor as my coding agent and have been using Claude and Gemini to support me throughout the build.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Local setup
+
+1. Copy `.env.example` to `.env.local` and fill in your own keys:
+  ```
+   NEXT_PUBLIC_SUPABASE_URL=
+   NEXT_PUBLIC_SUPABASE_ANON_KEY=
+   FINNHUB_API_KEY=
+  ```
+2. Install and run:
+  ```bash
+   npm install
+   npm run dev
+  ```
+3. Open [http://localhost:3000](http://localhost:3000).
+
